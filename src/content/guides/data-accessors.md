@@ -6,20 +6,16 @@ scope:
   - assign
   - range
 ---
-# Data Accessors
 
+# Data Accessors
 
 Most Victory components expect data in the form of an array of data objects with values specified for `x` and `y`. Victory components expose data accessor props that may be used when data is not readily available in this format. Data accessor props may be used to specify how a data prop should be used, process a elements in a data array, or to plot math functions even when no data prop is given.
 
-
 ## Specifying x and y data
-
 
 Some Victory components like `VictoryCandlestick` and `VictoryErrorBar` have unusual accessor props that match their expected data formats, but most Victory components expose standard `x` and `y` data accessor props. These props may be used to specify which properties or elements of the data array should be plotted on the x and y axes.
 
-
 When given as strings, these accessors will specify which properties of a data object to plot. The following example will plot employees on the x axis and salaries on the y axis:
-
 
 ```jsx
 <VictoryBar
@@ -33,21 +29,22 @@ When given as strings, these accessors will specify which properties of a data o
 />
 ```
 
-
 If data is given as an array of arrays, data accessors may be given as integers to specify the index of the nested array that should be plotted.
-
 
 ```jsx
 <VictoryBar
-  data={[[0, 1], [1, 1], [2, 3], [3, 1]]}
+  data={[
+    [0, 1],
+    [1, 1],
+    [2, 3],
+    [3, 1]
+  ]}
   x={0}
   y={1}
 />
 ```
 
-
 Data accessors may also be given as path strings or arrays to specify deeply nested data.
-
 
 ```jsx
 <VictoryBar
@@ -63,16 +60,13 @@ Data accessors may also be given as path strings or arrays to specify deeply nes
     ...
   ]}
   x="employee.firstName"
-  y=[{"salary", "base"}]
+  y={["salary", "base"]}
 />
 ```
 
-
 ## Processing data
 
-
 Data accessor props may be given as functions and used to process data, as in the following example.
-
 
 ```playground
   <VictoryChart
@@ -103,9 +97,7 @@ Data accessor props may be given as functions and used to process data, as in th
 </VictoryChart>
 ```
 
-
 ## Sorting data
-
 
 Sorting can be applied to the final data via the sortKey prop. This prop
 corresponds to the lodash [sortBy][] function.
@@ -120,7 +112,6 @@ This prop can be provided as a string, function, or array of either.
     y={({t}) => Math.sin(2 * t)}
   />
 ```
-
 
 ## Plotting functions
 
@@ -146,4 +137,4 @@ If data is not given, data accessor props may be used to plot math functions. In
   </VictoryChart>
 ```
 
-[sortBy]: https://lodash.com/docs/4.17.4#sortBy
+[sortby]: https://lodash.com/docs/4.17.4#sortBy
